@@ -1,13 +1,13 @@
 // TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
 function renderLicenseBadge(license) {
-  if (license === "mit") {
-    return "![Static Badge](https://Image.shields.io/badge/License-MIT_?style=flat&color-purple)";
-  } else if (license === "apache") {
-    return "![Static Badge](https://Image.shields.io/badge/License-Apache-_?style=flat&color=Blue)";
-  } else if (license === "the unilicense") {
-    return "![Static Badge](https://Image.shields.io/badge/License-the_unilicense-_?style=flat&color=green)";
-  } else if (license === "null") {
+  if (license === "Apache") {
+    return `![License](https://img.shields.io/badge/License-${license}-blue.svg)`;
+  } else if (license === "MIT") {
+    return `![License](https://img.shields.io/badge/License-${license}-blue.svg)`;
+  } else if (license === "Unlicense") {
+    return `![License](https://img.shields.io/badge/License-${license}-blue.svg)`;
+  } else {
     return "";
   }
 }
@@ -26,8 +26,10 @@ function renderLicenseLink(license) {
 // If there is no license, return an empty string
 function renderLicenseSection(license) {
   if (license === "null") {
+    return "";
   } else {
-    generateMarkdown(licenseSection);
+    //generateMarkdown(licenseSection);
+    return `${renderLicenseBadge(license)}${renderLicenseLink(license)}`;
   }
 }
 
@@ -35,87 +37,76 @@ function renderLicenseSection(license) {
 function generateMarkdown(userResponses, userInfo) {
   let myContents = `## Table of Contents`;
   let questions = `## Questions`;
-}
+  let mySections = "";
+  // CREATE TABLE OF CONTENTS
+  // [Table_of_Contents](#Contents)
+  //   [Description](#Description)
+  //   [License](#License)
+  //   [Installation](#Installation)
+  //   [Usage](#Usage)
+  //   [ContributingGuidelines](#Contributing)
+  //   [Tests](#Tests)
+  //   [Credits](#Credits)
+  //   [Questions](#Questions)
+  //   [GitHub](#GitHub)
+  //   [Contact_Me](#ContactMe)
+  // {
 
-// CREATE TABLE OF CONTENTS
-// # Table of contents
-// [Description](#Description)
-// [Installation](#Installation)
-// [Usage](#Usage)
-// [License](#License)
-// [ContributingGuidelines](#Contributing)
-// [Tests](#Tests)
-// [Credits](#Credits)
-// [Questions](#Questions)
-// [GitHub](#GitHub)
-// [Contact_Me](#ContactMe)
-{
-  if (userResponses.title !== "") return `# ${title}`;
-}
-
-{
   if (userResponses.description !== "") {
-    description += `* [Description](#description)`;
-  }
-}
-
-{
-  if (userResponses.installation !== "") {
-    installation += `* [Installation Instructions](#installation)`;
-  }
-}
-
-{
-  if (userResponses.usage !== "") {
-    usage += `* [Usage Information](#usage)`;
-  }
-}
-
-{
-  if (userResponses.contribution !== "") {
-    contribution += `* [Contribution Guidelines](#contribution)`;
-  }
-}
-
-{
-  if (userResponses.tests !== "") {
-    tests += `* [Test Instructions](#tests)`;
-  }
-}
-
-{
-  if (userResponses.credits !== "") {
-    credits += `* [Credits](#credits)`;
-  }
-}
-
-{
-  if (userResponses.questions !== "") {
-    questions += `* [Questions](#questions)`;
-  }
-}
-
-//GENERATE MARKDOWN FOR TOP SECTION OF THE README FILE
-
-let myMarkdown = `# ${user.responses.title}
-
-![badge for license](??????????????????)
-
-## Description
-
-*Enter detailed description of your project here:*
-
+    myContents += `\n* [Description](#description)`;
+    mySections += `\n## Description
 ${userResponses.description}`;
+  }
 
-//Add Table of Contents here
+  if (userResponses.installation !== "") {
+    myContents += `\n* [Installation Instructions](#installation)`;
+    mySections += `\n## Installation
+${userResponses.installation}`;
+  }
 
-myMarkdown += myContents;
+  if (userResponses.usage !== "") {
+    myContents += `\n* [Usage Information](#usage)`;
+    mySections += `\n## Usage
+${userResponses.usage}`;
+  }
 
-//Add license section
-myMarkdown += module.exports = generateMarkdown;
+  if (userResponses.contribution !== "") {
+    myContents += `\n* [Contribution Guidelines](#contribution)`;
+    mySections += `\n## Contribution
+${userResponses.contribution}`;
+  }
 
-// ## GitHub
-// ${data.userName}
+  if (userResponses.tests !== "") {
+    myContents += `\n* [Test Instructions](#tests)`;
+    mySections += `\n## Tests
+${userResponses.tests}`;
+  }
 
-// ## Contact Me
-// "Please contact me at ${data.email} for additional information."
+  if (userResponses.credits !== "") {
+    myContents += `\n* [Credits](#credits)`;
+    mySections += `\n## Credits
+${userResponses.credits}`;
+  }
+
+  if (userResponses.email !== "") {
+    myContents += `\n* [Contact Me](#contact)`;
+    mySections += `\n## Contact    
+ *Please contact me at ${userResponses.email} or on gitHub ${userResponses.gitHubUsername} for additional information .*`;
+  }
+
+  //GENERATE MARKDOWN FOR TOP SECTION OF THE README FILE
+
+  let myMarkdown = `# ${userResponses.projectTitle}
+
+${renderLicenseBadge(userResponses.license)}
+`;
+  //Add Table of Contents here
+
+  myMarkdown += myContents;
+  myMarkdown += mySections;
+
+  //Add license section
+
+  return myMarkdown;
+}
+module.exports = generateMarkdown;

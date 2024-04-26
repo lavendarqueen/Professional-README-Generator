@@ -2,11 +2,12 @@
 const inquirer = require("inquirer");
 const colors = require("colors");
 const fs = require("fs");
-const api = require(".utils/api.js");
+const util = require("util");
+// const api = require(".utils/api.js");
 const generateMarkdown = require("./utils/generateMarkdown.js");
 
 // TODO: Create an array of questions for user input
-inquirer.prompt([
+const questions = [
   {
     type: "input",
     name: "name",
@@ -14,8 +15,8 @@ inquirer.prompt([
   },
   {
     type: "input",
-    name: "LinkedIn Username",
-    message: colors.brightMagenta("Please enter yourLinkedIn Username."),
+    name: "LinkedInUsername",
+    message: colors.brightMagenta("Please enter your LinkedIn Username."),
   },
   {
     type: "input",
@@ -30,43 +31,7 @@ inquirer.prompt([
   {
     type: "list",
     name: "license",
-    choices: [
-      "AFL-3.0",
-      "Apache-2.0",
-      "Artistic-2.0",
-      "BSL-1.0",
-      "BSD-2-Clause",
-      "BSD-3-Clause",
-      "BSD-3-Clause-Clear",
-      "BSD-4-Clause",
-      "0BSD",
-      "CC",
-      "CC0-1.0",
-      "CC-BY-4.0",
-      "CC-BY-SA-4.0",
-      "WTFPL",
-      "ECL-2.0",
-      "EPL-1.0",
-      "EPL-2.0",
-      "EUPL-1.1",
-      "AGPL-3.0",
-      "GPL",
-      "GPL-2.0",
-      "GPL-3.0",
-      "LGPL",
-      "LGPL-2.1",
-      "LGPL-3.0",
-      "ISC",
-      "LPPL-1.3c",
-      "MS-PL",
-      "MIT",
-      "MPL-2.0",
-      "OSL-3.0",
-      "PostgreSQL",
-      "OFL-1.1",
-      "NCSA",
-      "Unlicense",
-    ],
+    choices: ["Apache-2.0", "MIT", "PostgreSQL", "Unlicense"],
   },
   {
     type: "input",
@@ -81,23 +46,16 @@ inquirer.prompt([
   },
   {
     type: "input",
-    name: "projectDescription",
-    message: colors.brightMagenta(
-      "Please enter a brief description of your project."
-    ),
-  },
-  {
-    type: "input",
     name: "url",
     message: colors.brightMagenta(
       "Please enter the link to your gitHub repository."
     ),
   },
-  {
-    type: "input",
-    name: "screenshot",
-    message: colors.brightMagenta("Please enter the link to your screenshot."),
-  },
+  // {
+  //   type: "input",
+  //   name: "screenshot",
+  //   message: colors.brightMagenta("Please enter the link to your screenshot."),
+  // },
   {
     type: "input",
     name: "email",
@@ -105,10 +63,8 @@ inquirer.prompt([
   },
   {
     type: "input",
-    name: "dependencies",
-    message: colors.brightMagenta(
-      "Please enter npm i to install dependencies."
-    ),
+    name: "installation",
+    message: colors.brightMagenta("Please enter installation instructions."),
   },
   {
     type: "input",
@@ -124,9 +80,9 @@ inquirer.prompt([
   },
   {
     type: "input",
-    name: "contributionGuidelines",
+    name: "contribution",
     message: colors.brightMagenta(
-      "Please describe contributing guidelines for your project."
+      "Please describe contribution guidelines for your project."
     ),
   },
   {
@@ -142,11 +98,11 @@ inquirer.prompt([
     message: colors.brightMagenta("Built using:"),
     choices: ["Next.js", "React.js", "Bootstrap.com", "jQuery.com"],
   },
-]);
+];
 
 // TODO: Create a function to write README file
 function writeToFile(README, data) {
-  fs.writeFile(README, Data, (err) => {
+  fs.writeFile(README, data, (err) => {
     if (err) {
       return console.log(err);
     }
@@ -163,11 +119,11 @@ async function init() {
     console.log("Your responses: ", userResponses);
     console.log("Thank you for your responses! Fetching your data...");
 
-    const userInfo = await api.getUser(userResponses);
-    console.log("Your Github user info: ", userInfo);
+    // const userInfo = await api.getUser(userResponses);
+    // console.log("Your Github user info: ", userInfo);
 
     console.log("Generating your README...");
-    const markdown = generateMarkdown(userResponses, userInfo);
+    const markdown = generateMarkdown(userResponses);
     console.log(markdown);
 
     await writeFileAsync("ExampleREADME.md", markdown);
