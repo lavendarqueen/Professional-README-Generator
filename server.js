@@ -4,7 +4,7 @@ const colors = require("colors");
 const fs = require("fs");
 // const api = require(".utils/api.js");
 // const generateMarkdown = require("./utils/generateMarkdown.js");
-const generateReadMe = require("./tutor.js")
+const generateReadMe = require("./tutor.js");
 const questions = [
   {
     type: "input",
@@ -30,7 +30,7 @@ const questions = [
 async function generateHtml() {
   try {
     const answer = await inquirer.prompt(questions);
-    fs.writeFile("tutor.md", generateReadMe(answer), function (err) {
+    fs.writeFile("README.md", generateReadMe(answer), function (err) {
       if (err) {
         console.log(err);
       } else {

@@ -89,8 +89,8 @@ ${userResponses.credits}`;
   }
 
   if (userResponses.email !== "") {
-    myContents += `\n* [Contact Me](#contact)`;
-    mySections += `\n## Contact    
+    myContents += `\n* [Questions](#questions)`;
+    mySections += `\n## Questions    
  *Please contact me at ${userResponses.email} or on gitHub ${userResponses.gitHubUsername} for additional information .*`;
   }
 
