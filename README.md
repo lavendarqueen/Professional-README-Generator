@@ -20,6 +20,12 @@ An application that generates readme files from prompts on the command line.
 
 From the command line, input "node index.js", hit enter, then follow the prompts. To view your completed ReadME file, right click on ExampleREADME.md and select "Open Preview".
 
+![Screenshot of initial input to command line](assets/screenshots/screenshot1.png)
+
+![Screenshot of completed user inputs](assets/screenshots/screenshot2.png)
+
+![Screenshot of opening readme preview](assets/screenshots/screenshot3.png)
+
 ## Usage
 
 The intended use of this application is to generate quality professional ReadMe files for one's repositories.
