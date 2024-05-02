@@ -1,5 +1,4 @@
 # Professional-README-Generator
-
 ![License](https://img.shields.io/badge/License-MIT-blue.svg)
 ## Table of Contents
 * [Description](#description)
@@ -11,6 +10,7 @@
 * [Questions](#questions)
 ## Description
 An application that generates professional quality readme files using prompts from the command line interface.
+https://github.com/lavendarqueen/Professional-README-Generator/assets/159203938/d635fa2c-6272-4140-92f4-b46003f382f5
 ## Installation
 From the command line interface, input node.js, hit enter, and follow the prompts. Your readme file will be generated and can be reviewed by right clicking on the file and selecting Open Preview.
 ## Usage
