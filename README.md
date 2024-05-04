@@ -30,7 +30,7 @@ From the command line, input "node index.js", hit enter, then follow the prompts
 
 ![Screenshot of completed user inputs](assets/screenshots/screenshot2.png)
 
-- Link to video walk-through: https://drive.google.com/open?id=1-50EuAK8FH94I5sFVpicfo51V10SRw-h&usp=drive_fs
+Link to video walk-through: https://drive.google.com/open?id=1-50EuAK8FH94I5sFVpicfo51V10SRw-h&usp=drive_fs
 
 ## Contribution
 
