@@ -32,9 +32,9 @@ From the command line, input "node index.js", hit enter, then follow the prompts
 
 Link to video walk-through: https://drive.google.com/open?id=1-50EuAK8FH94I5sFVpicfo51V10SRw-h&usp=drive_fs
 
-## Contribution
+## Contributions
 
-Fork my repo and send a pull request.
+Contributions in the interest of sharing ideas and concepts are sincerely welcomee. Please fork my repo and send a pull request with your improvements.
 
 ## Tests
 
